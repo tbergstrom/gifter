@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" media="screen" title="styler" charset="utf-8">
+        <script src="{% static '/js/dashboard.js'%}"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header">
+                <h3 class="greeting">{{ request.session.user.username }}'s Dashboard</h3>
+                <p class="header_link"><a href="{% url 'logreg:logout' %}">Log out</a></p>
+            </div>
+            <h4 class="wishlist_header">Your WishList</h4>
+            <div class="main_list_wrapper">
+                <div id="my_list_wrapper">
+                    <table class="table table-hover" id="my_table">
+                        <tr>
+                            <th>Item</th>
+                            <th>User</th>
+                            <th>Date Added</th>
+                            <th>Action</th>
+                        </tr>
+                        {% for item in my_items %}
+                        <tr>
+                            <td><a href="{% url 'wishlist:show' item.id %}">{{ item.name }}</a></td>
+                            <td><a href="{% url 'wishlist:profile' item.user.id %}">{{ item.user.username }}</a></td>
+                            <td>{{ item.created_at|date }}</td>
+                            <td><a class="remove_item_button" href="{% url 'wishlist:delete' item.id %}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                        {% for item in added_items %}
+                        <tr>
+                            <td><a href="{% url 'wishlist:show' item.id %}">{{ item.name }}</a></td>
+                            <td><a href="{% url 'wishlist:profile' item.user.id %}">{{ item.user.username }}</a></td>
+                            <td>{{ item.created_at|date }}</td>
+                            <td><a class="remove_item_button" href="{% url 'wishlist:unjoin' item.id %}">Remove</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <p><a id="create_item_button" href="{% url 'wishlist:add_item' %}">Create New Item</a></p>
+
+                <h4 class="wishlist_header">Added By Others</h4>
+                <div id="other_list_wrapper">
+                    <table class="table table-hover" id="other_table">
+                        <tr>
+                            <th onclick="sort_other_table(0)">Item</th>
+                            <th onclick="sort_other_table(1)">User</th>
+                            <th onclick="sort_other_table(2)">Date Added</th>
+                            <th>Action</th>
+                        </tr>
+                        {% for item in all_items %}
+                        <tr>
+                            <td><a href="{% url 'wishlist:show' item.id %}">{{ item.name }}</a></td>
+                            <td><a href="{% url 'wishlist:profile' item.user.id %}">{{ item.user.username }}</a></td>
+                            <td>{{ item.created_at|date }}</td>
+                            <td>
+                            {% if item not in my_items and item not in  added_items %}
+                                <a class="add_item_button" href="{% url 'wishlist:join' item.id %}">Add to My List</a>
+                            {% else %}
+                                <span>Already Added</span>
+                            {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="all_users_list">
+                <h5 id="all_users_header">All Users</h5>
+                <table class="table table-hover">
+                    {% for user in all_users %}
+                    <tr>
+                        <td><a href="{% url 'wishlist:profile' user.id %}">{{ user.username }}</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

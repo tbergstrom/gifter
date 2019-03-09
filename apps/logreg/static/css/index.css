@@ -1,0 +1,13 @@
+.index_form {
+    display: inline-block;
+}
+
+.error_message_list {
+    display: inline-block;
+    height: auto;
+    width: auto;
+}
+
+.error_text {
+    color: red;
+}

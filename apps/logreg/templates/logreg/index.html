@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            {% load static %}
+            <meta charset="utf-8">
+            <title>Gifter</title>
+            <link rel="stylesheet" href="{% static '/css/index.css' %}" media="screen" title="styler" charset="utf-8">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" media="screen" title="styler" charset="utf-8">
+        </head>
+        <body>
+            <div class="wrapper">
+                <h1>Gifter</h1>
+                    <div class="index_form">
+                        <form action="{% url 'logreg:register' %}" method="POST">
+                            {% csrf_token %}
+                            <h4>Register</h4>
+
+                            <p id="first_name">
+                                <input type="text" name="first_name" placeholder="name">
+                            </p>
+
+                            <p id="last_name">
+                                <input type="text" name="last_name" placeholder="last name">
+                            </p>
+
+                            <p id="username">
+                                <input type="text" name="username" placeholder="username">
+                            </p>
+                            <label for="date_of_birth">Date of birth:</label>
+                            <p id="date_of_birth">
+                                <input type="date" name="date_of_birth" placeholder="Date of birth">
+                            </p>
+
+                            <p id="email">
+                                <input type="email" name="email" placeholder="email address">
+                            </p>
+
+                            <p id="password">
+                                <input type="password" name="password" placeholder="password">
+                            </p>
+
+                            <p id="confirm_password">
+                                <input type="password" name="confirm_password" placeholder="confirm password">
+                            </p>
+                            <input class="submit_button" type="submit" value="register">
+                        </form>
+                    </div>
+
+                    <div class="index_form">
+                        <form action="{% url 'logreg:login' %}" method="POST">
+                            {% csrf_token %}
+                            <h4>Login</h4>
+                            <p>
+                                <input type="text" name="username" placeholder="username">
+                            </p>
+                            <p>
+                                <input type="password" name="password" placeholder="password">
+                            </p>
+                            <input class="submit_button" type="submit" value="log in">
+                        </form>
+                    </div>
+
+                    <div class="error_message_list">
+                    {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                                <li class="error_text">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    </div>
+            </div>
+        </body>
+    </html>

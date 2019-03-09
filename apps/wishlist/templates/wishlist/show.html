@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <title>Show</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" media="screen" title="styler" charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header">
+
+                <h2 class="greeting">Item Details</h2>
+                <div class="header_link">
+                    <p><a href="{% url 'logreg:logout' %}">Logout</a></p>
+                    <p><a href="{% url 'wishlist:dashboard' %}">Dashboard</a></p>
+                </div>
+            </div>
+            {% for item in item %}
+            <h3>{{ item.name }}</h3>
+            <p><strong>Created on: </strong> {{ item.created_at }} by <a href="{% url 'wishlist:profile' item.user.id %}">{{ item.user.username }}</a></p>
+            {% if item.description %}
+            <p><strong>Description:</strong></p>
+            <p>{{ item.description }}</p>
+            {% endif %}
+            {% endfor %}
+
+        </div>
+    </body>
+</html>

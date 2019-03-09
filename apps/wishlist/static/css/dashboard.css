@@ -1,0 +1,130 @@
+* {
+    margin: auto;
+}
+
+.wrapper {
+    width: 98%
+}
+
+.add_item_button {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 4px 6px 4px 6px;
+    background-image: linear-gradient(blue, lightskyblue);
+    color: white;
+    text-decoration: none;
+}
+
+.add_item_button:hover {
+    text-decoration: none;
+    color: darkblue;
+    cursor: pointer;
+}
+
+
+#create_item_button {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 4px 6px 4px 6px;
+    background-image: linear-gradient(green, forestgreen);
+    color: white;
+    text-decoration: none;
+}
+
+#create_item_button:hover {
+    text-decoration: none;
+    color: darkgreen;
+    cursor: pointer;
+}
+
+.remove_item_button {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 4px 6px 4px 6px;
+    background-image: linear-gradient(red, orangered);
+    color: white;
+    text-decoration: none;
+}
+
+.remove_item_button:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color: rebeccapurple;
+}
+
+.greeting {
+    display: inline-block;
+    width: 80%;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.header_link {
+    display: inline-block;
+    width: 15%;
+    position: fixed;
+
+}
+
+.main_list_wrapper {
+    display: inline-block;
+    width: 70%;
+    height: 800px;
+    margin-right: 10px;
+}
+
+#my_list_wrapper {
+    height: 200px;
+    overflow: auto;
+}
+
+#other_list_wrapper {
+    height: 500px;
+    overflow: auto;
+}
+
+.item_table {
+    border: 2px solid black;
+}
+
+.all_users_list {
+    display: inline-block;
+    height: 700px;
+    width: 15%;
+    border-width: 0px 0px 1px 1px;
+    border-style: outset;
+    border-color: gainsboro;
+    padding-top: 5px;
+    position: fixed;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+#all_users_header {
+    text-align: center;
+}
+
+.user_details {
+    display: inline-block;
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+    margin-left: 10px;
+    width: 30%;
+    height: auto;
+    position: relative;
+}
+
+.wishlist_header {
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.error_message_list {
+    display: inline-block;
+    height: auto;
+    width: auto;
+}
+
+.error_text {
+    color: red;
+}

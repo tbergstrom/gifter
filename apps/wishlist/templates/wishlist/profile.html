@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <title>User Profile</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" media="screen" title="styler" charset="utf-8">
+        <script src="{% static '/js/dashboard.js'%}"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header">
+                <h2 class="greeting">{{ user.username }} 's Profile</h2>
+                <div class="header_link">
+                    <p><a href="{% url 'logreg:logout' %}">Logout</a></p>
+                    <p><a href="{% url 'wishlist:dashboard' %}">Dashboard</a></p>
+                </div>
+            </div>
+            <div class="user_details">
+                <p>{{ user.first_name }} {{ user.last_name }}</p>
+                <p>{{ user.email }}</p>
+                <p><strong>Birthday: </strong>{{ user.date_of_birth|date }}</p>
+                <p><strong>Date Joined: </strong>{{ user.created_at|date }}</p>
+            </div>
+            <div class="main_list_wrapper">
+                <table class="table table-hover" id="other_table">
+                    <h5 class="wishlist_header">{{ user.username }} 's WishList:</h5>
+                    <tr>
+                        <th onclick="sort_other_table(0)">Item</th>
+                        <th onclick="sort_other_table(1)">User</th>
+                        <th onclick="sort_other_table(2)">Date Added</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for item in items %}
+                    <tr>
+                        <td><a href="{% url 'wishlist:show' item.id %}">{{ item.name }}</a></td>
+                        <td><a href="{% url 'wishlist:profile' item.user.id %}">{{ item.user.username }}</a></td>
+                        <td>{{ item.created_at|date }}</td>
+                        <td>
+                        {% if item not in my_items and item not in added_items %}
+                            <a class="add_item_button" href="{% url 'wishlist:join' item.id %}">Add to My List</a>
+                        {% else  %}
+                            <span>Already Added</span>
+                        {% endif %}
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
