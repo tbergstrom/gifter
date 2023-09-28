@@ -14,11 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.conf.urls import url, include
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^', include(("apps.logreg.urls", "logreg"), namespace="logreg")),
-    url(r'^wishlist/', include(("apps.wishlist.urls", "wishlist"), namespace="wishlist"))
+    path('', include(("apps.logreg.urls", "logreg"), namespace="logreg")),
+    path('wishlist/', include(("apps.wishlist.urls", "wishlist"), namespace="wishlist"))
 ]
