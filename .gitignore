@@ -1,0 +1,5 @@
+# Ignore IDE-specific files and folders
+.idea/
+.vscode/
+node_modules/
+db.sqlite3
