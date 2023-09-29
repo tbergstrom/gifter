@@ -1,6 +1,11 @@
-.index_form {
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+/* .index_form {
     display: inline-block;
-}
+} */
 
 .error_message_list {
     display: inline-block;
