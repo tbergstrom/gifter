@@ -5,14 +5,14 @@
             <meta charset="utf-8">
             <title>Gifter</title>
             <link rel="stylesheet" href="{% static '/css/index.css' %}" media="screen" title="styler" charset="utf-8">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-            <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" media="screen" title="styler" charset="utf-8">
+            <link rel="stylesheet" href="{% static '/css/tailwind.css' %}" media="screen" title="styler" charset="utf-8">
+            <!-- <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" media="screen" title="styler" charset="utf-8"> -->
         </head>
         <body>
-            <div class="wrapper">
+            <div class="wrapper flex justify-center">
                 <h1>Gifter</h1>
-                    <div class="index_form">
-                        <form action="{% url 'logreg:register' %}" method="POST">
+                    <div class="bg-blue-200 p-4 rounded-lg">
+                        <form action="{% url 'logreg:register' %}" class="border p-4 rounded-lg m-4" method="POST">
                             {% csrf_token %}
                             <h4>Register</h4>
 
@@ -43,12 +43,12 @@
                             <p id="confirm_password">
                                 <input type="password" name="confirm_password" placeholder="confirm password">
                             </p>
-                            <input class="submit_button" type="submit" value="register">
+                            <input class="bg-green-500 text-white py-2 px-4 rounded-full hover:bg-green-600" type="submit" value="register">
                         </form>
                     </div>
 
-                    <div class="index_form">
-                        <form action="{% url 'logreg:login' %}" method="POST">
+                    <div class="bg-blue-200 p-4 rounded-lg">
+                        <form action="{% url 'logreg:login' %}" class="border p-4 rounded-lg m-4" method="POST">
                             {% csrf_token %}
                             <h4>Login</h4>
                             <p>
@@ -57,7 +57,7 @@
                             <p>
                                 <input type="password" name="password" placeholder="password">
                             </p>
-                            <input class="submit_button" type="submit" value="log in">
+                            <input class="bg-green-500 text-white py-2 px-4 rounded-full hover:bg-green-600" type="submit" value="log in">
                         </form>
                     </div>
 
