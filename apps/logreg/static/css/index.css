@@ -1,6 +1,5 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import '../../static/css/tailwind.css';
+
 
 
 /* .index_form {
@@ -15,4 +14,35 @@
 
 .error_text {
     color: red;
+}
+
+.wrapper {
+    margin-top: 20px; /* Adjust the value to your preference */
+}
+
+.logreg-form {
+    flex-basis: calc(50% - 20px); /* Adjust the width of each form */
+    background-color: #1F2937; /* Change to your desired dark background color */
+    margin-left: 50px;
+    color: white;
+}
+
+.logreg-form input{
+    margin-top: 20px; /* Adjust the value to your preference */
+    background-color: gray; /* Change to your desired dark background color */
+}
+
+.logreg-form:first-child {
+    margin-bottom: 20px; /* Adjust the value to your preference */
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the gap to your preference */
+}
+
+.logreg-form h4 {
+    color: white; /* Change to a color that contrasts well with your background */
 }
