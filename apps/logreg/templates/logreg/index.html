@@ -8,11 +8,11 @@
             <link rel="stylesheet" href="{% static '/css/tailwind.css' %}" media="screen" title="styler" charset="utf-8">
             <!-- <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" media="screen" title="styler" charset="utf-8"> -->
         </head>
-        <body>
-            <div class="wrapper flex justify-center">
+        <body class="bg-gray-900">
+            <div class="bg-gray-900 wrapper flex justify-center">
                 <h1>Gifter</h1>
-                    <div class="bg-blue-200 p-4 rounded-lg">
-                        <form action="{% url 'logreg:register' %}" class="border p-4 rounded-lg m-4" method="POST">
+                    <div class="bg-gray-700 p-4 rounded-lg">
+                        <form action="{% url 'logreg:register' %}" class="border p-4 rounded-lg m-4 logreg-form" method="POST" id="register-form">
                             {% csrf_token %}
                             <h4>Register</h4>
 
@@ -47,8 +47,8 @@
                         </form>
                     </div>
 
-                    <div class="bg-blue-200 p-4 rounded-lg">
-                        <form action="{% url 'logreg:login' %}" class="border p-4 rounded-lg m-4" method="POST">
+                    <div class="bg-gray-700 p-4 rounded-lg">
+                        <form action="{% url 'logreg:login' %}" class="border p-4 rounded-lg m-4 logreg-form" method="POST" id="login-form">
                             {% csrf_token %}
                             <h4>Login</h4>
                             <p>
